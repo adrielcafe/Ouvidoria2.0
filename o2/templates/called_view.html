@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+	<div id="page-called-view" class="row">
+		<main class="col-md-9 col-sm-9 animated fadeInLeft">
+			<div class="page-title">
+				<h2>{{ obj.title }}</h2>
+			</div>
+	   		<article class="testimonial-item">
+	        	<blockquote class="row">
+		        	<div class="col-md-9 col-sm-9">
+		        		<i class="fa fa-quote-left pull-left"></i>
+		        		<div>
+		             		{{ obj.description|escape|safe }}
+						</div>
+		        	</div>
+		        	<div id="called-info" class="col-md-3 col-sm-3">
+		        		<dl>
+				  			<dt>{% trans "Created By" %}</dt>
+						  	<dd><a href="/user/{{ obj.created_by.username }}" class="label label-default">{{ obj.created_by.first_name }} {{ obj.created_by.last_name }}</a></dd>
+						</dl>
+						<dl>
+				  			<dt>{% trans "Category" %}</dt>
+						  	<dd>{{ obj.category }}</dd>
+						</dl>
+						<dl>
+				  			<dt>{% trans "Creation Date" %}</dt>
+						  	<dd><time datetime='{{ obj.log.created_in|date:"Y-m-d" }}'>{{ obj.log.created_in|date:"d/m/Y" }}</time></dd>
+						</dl>
+		        	</div>
+	        	</blockquote>
+	        	<div class="social-share">
+	       			<span class="share">{% trans "Share" %}: </span>
+	               	<ul class="socialcount" data-url="http://" data-share-text="Google is a search engine">
+	                	<li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://" title="Share on Facebook"><i class="fa fa-facebook"></i><span class="count">Like</span></a></li>
+	                   	<li class="twitter"><a href="https://twitter.com/intent/tweet?text=http://" title="Share on Twitter"><i class="fa fa-twitter"></i><span class="count">Tweet</span></a></li>
+	                   	<li class="googleplus"><a href="https://plus.google.com/share?url=http://" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span class="count">+1</span></a></li>
+	               	</ul>
+           		</div>
+	    	</article>
+	    	<div id="comments">
+		    	<div class="title">
+					<h3>{% trans "Comments" %}</h3>
+				</div>
+	    		<div id="add-comment" class="row">
+    				{% if user.is_authenticated %}
+    				<form id="form-add-comment" method="post" action="/ombudsman/{{ obj.belongs_to.slug }}/called/{{ obj.slug }}/" role="form">
+						<div class="col-md-9 col-sm-9">
+							{% csrf_token %}
+							<textarea name="comment"></textarea>
+						</div>
+						<div class="col-md-3 col-sm-3 flexbox-center">
+							<input type="submit" value="Comentar" class="btn btn-default btn-block">
+						</div>
+					</form>
+					{% else %}
+					<div class="col-md-12 col-sm-12">
+						<p>Faça <a href="/user/login">Login</a> ou <a href="#" data-toggle="modal" data-target="#dlg-register">Registre-se</a> para comentar</p>
+					</div>
+					{% endif %}
+	    		</div>
+				<div class="col-md-12 col-sm-12 comments-container">
+                    <ol class="commentlist">
+                    	{% for comment in obj.comments %}
+	                    	<li class="comment animated fadeInRight">
+	                        	<div class="comment-container">
+	                            	<div class="avatar"><img src="/user/{{ comment.created_by.username }}/picture" class="img-responsive"></div>
+	                                <div class="comment-box">
+	                                	<div class="comment-author">
+	                                		<a href="#" class="label label-default">{{ comment.created_by.first_name }} {{ comment.created_by.last_name }}</a> · <time datetime='{{ comment.created_in|date:"Y-m-d" }} {{ comment.created_in|time:"H:i" }}'>{{ comment.created_in|date:"d/m/Y" }} {{ comment.created_in|time:"H:i" }}</time>
+	                                	</div>
+	                                	<div class="comment-text"><p>{{ comment.text|escape|safe }}</p></div>
+	                                </div>
+	                            </div>
+                        	</li>
+                       	{% endfor %}
+                    </ol>
+           		</div>
+	    	</div>
+		</main>
+		<aside class="col-md-3 col-sm-3 animated flipInY">
+			<div class="widget">
+				<div class="title">
+					<h4>{% trans "About the Ombudsman Office" %}</h4>
+				</div>
+				<div class="text-box">
+					<a href="/ombudsman/{{ obj.belongs_to.slug }}" class="thumbnail">
+			      		<img src="/ombudsman/{{ obj.belongs_to.slug }}/picture" class="img-responsive">
+				    </a>
+					<h5 class="text-center">{{ obj.belongs_to.name }}</h5>
+					{% if obj.belongs_to.moderators %}
+		            	<dl>
+				  			<dt>{% trans "Ombudsman" %}</dt>
+						  	<dd>
+		                    	{% for moderator in obj.belongs_to.moderators %}
+							  		<a href="/user/{{ moderator.username }}" class="label label-success">{{ moderator.first_name }} {{ moderator.last_name }}</a>
+		                    	{% endfor %}
+						  	</dd>
+						</dl>
+					{% endif %}
+					<p class="text-center"><a href="/ombudsman/{{ obj.belongs_to.slug }}" class="btn">{% trans "Details" %}</a></p>
+	            </div>
+			</div>
+		</aside>
+	</div>
+</div>
+{% endblock %}

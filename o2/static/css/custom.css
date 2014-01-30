@@ -1,0 +1,92 @@
+.modal {
+	z-index: 999999;
+}
+.modal-backdrop.fade {
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.modal-backdrop.fade.in {
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+.modal-footer {
+	margin-top: 0;	
+}
+
+.btn.btn-white {
+	background-color: #F5F5F5 !important;
+	color: #555 !important;
+}
+.btn.btn-white:hover {
+	background-color: #575657 !important;
+	color: #F5F5F5 !important;
+}
+
+.service-heading h4 {
+	margin: 10px 0;
+	font-size: 20px;
+}
+.service-icon {
+	padding: 12px 15px;
+}
+
+.text-box {
+	padding: 5px;
+}
+.text-box-icon {
+	font-size: 40px;
+	line-height: 40px;
+}
+
+.dropdown-menu>li>a:hover, 
+.dropdown-menu>li>a:focus {
+	background: #555;
+}
+
+.testimonial-item blockquote .fa-quote-left {
+	font-size: 30px;
+}
+.testimonial-item blockquote p {
+	text-indent: 0;
+}
+.testimonial-item .testimonial-review small:before {
+	content: "";
+}
+.testimonial-item .testimonial-review {
+	padding-top: 0;
+}
+
+.label {
+	line-height: 25px;
+}
+.label-orange {
+	background-color: rgb(240, 100, 55);
+}
+.label-orange[href]:hover,
+.label-orange[href]:focus {
+	background-color: rgb(221, 78, 35);
+}
+
+.alert-orange {
+	background-color: #f79679 !important;
+	color: #FFF !important;
+}
+
+.bootstrap-select.btn-group, 
+.bootstrap-select.btn-group[class*="span"] {
+	margin-bottom: 0;
+}
+
+.bootstrap-tagsinput {
+	width: 100%;
+	margin-bottom: 0;
+}
+.bootstrap-tagsinput span {
+	font-size: 100% !important;
+	background: rgb(240, 100, 55) !important;
+}
+
+.input-append.date .add-on i,
+.input-prepend.date .add-on i {
+	display: inline-block;
+}

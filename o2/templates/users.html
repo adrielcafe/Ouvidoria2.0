@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+	<div id="page-users" class="row">
+		<main class="col-md-9 col-sm-9 col-md-push-3 animated fadeInRight">
+			<div class="page-title">
+				<h2>{% trans "People" %}</h2>
+	    		<hr>
+			</div>
+	   		<div class="filter-order">
+		   		<a href="#" data-sortable-label="Filter projects" id="sort-portfolio">{% trans "Order by" %}<i class="fa fa-th-large"></i></a>
+		        <ul id="filters">
+		          	<li><a href="#" data-filter=".a-z" class="active">Ordem Alfabética (A-Z)</a></li>
+		          	<li><a href="#" data-filter=".z-a">Ordem Alfabética (Z-A)</a></li>
+	         		<li><a href="#" data-filter=".category">Mais Recentes</a></li>
+	         		<li><a href="#" data-filter=".category">Mais Antigas</a></li>
+		        </ul>
+	        </div>
+	        <div id="list-items" class="container margin-bot">
+	       		
+	    	</div>
+	        <p class="text-center"><a id="more-results" class="btn btn-sm disabled animated flipInX">{% trans "More Results" %}</a></p>
+		</main>
+		<aside class="col-md-3 col-sm-3 sidebar col-md-pull-9 animated fadeInLeft">
+			<div class="widget widget-filter service">
+	        	<div class="service-heading clearfix">
+	             	<div class="service-icon">
+	             		<i class="fa fa-search"></i>
+	             	</div>
+	            <h4>{% trans "Search" %}</h4>
+	            </div>
+	            <div class="service-text">
+					<form>
+					    <label class="widget-title"><h5>{% trans "Username" %}</h5></label>
+					    <input id="user-username" type="text">
+					    
+					    <hr>
+					    
+					    <label class="widget-title"><h5>{% trans "First Name" %}</h5></label>
+					    <input id="user-first-name" type="text">
+					    
+						<hr>
+						
+					    <label class="widget-title"><h5>{% trans "Last Name" %}</h5></label>
+					    <input id="user-last-name" type="text">
+					    
+						<hr>
+						
+					    <label class="widget-title"><h5>{% trans "Gender" %}</h5></label>
+						<div class="radio">
+					  		<label>
+						    	<input type="radio" name="user-gender" value="" checked>
+						    	{% trans "All" %}
+						  	</label>
+						</div>
+						<div class="radio">
+					  		<label>
+						    	<input type="radio" name="user-gender" value="M">
+						    	{% trans "Male" %}
+						  	</label>
+						</div>
+						<div class="radio">
+					  		<label>
+						    	<input type="radio" name="user-gender" value="F">
+						    	{% trans "Female" %}
+						  	</label>
+						</div>
+						
+					    <hr>
+					    
+					    <a id="search" class="btn btn-lg disabled full-width">{% trans "Search" %}</a>
+					</form>
+	            </div>
+	        </div>
+		</aside>
+	</div>
+</div>
+{% endblock %}
+
+{% block templates %}
+<script type="text/html" id="tpl-users">
+	<% _.each(objects, function(obj) { %>
+		<div class="row list-item animated fadeInRight">
+			<div class="list-item-image col-md-2 col-sm-2 visible-md visible-lg" >
+	    		<a href="/user/<%= obj.username %>">
+            		<img src="/user/<%= obj.username %>/picture" class="img-responsive img-thumbnail">
+                	<div class="overlay"><div class="icon-wrap"><i class="fa fa-chevron-right"></i></div></div>
+	        	</a>
+	    	</div>
+	    	<div class="list-item-description col-md-8 col-sm-9">
+	    		<h4><%= obj.first_name %> <%= obj.last_name %></h4>
+	        	<span class="list-item-categories"></span>
+	    	</div>
+	    	<div class="list-item-buttons flexbox-center col-md-2 col-sm-3">
+        		<a href="/user/<%= obj.username %>" class="btn btn-small">{% trans "Details" %}</a>
+			</div>
+		</div>
+	<% }); %>
+</script>
+{% endblock %}

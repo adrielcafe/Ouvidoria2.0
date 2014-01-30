@@ -1,0 +1,51 @@
+/* COLOR ORANGE rgb(240, 100, 55) */
+
+/* BASIC */
+.current_page_item, .current_page_item > a, .input-error, .qtip-default, .btn.btn-primary, .testimonial .testimonial-buttons a, .progress-bar, .progress-striped .progress-bar, .text-box:hover .text-box-icon {
+	background: rgb(240, 100, 55);
+}
+
+.highlight1, .slideshow .c-buttons a, .service:hover .service-icon, .post-info-icon, .jp-play-bar, .jp-play-bar span, .jp-volume-bar-value span, .single-page-controls a i, .flex-direction-nav a, .flex-control-paging li a.flex-active {
+	background: rgb(240, 100, 55) !important;	
+}
+
+.dropcap, .header-text h3 a, .header-title h3 a, .latest-post-item a:hover h5, .post-content h4 a:hover, .post-meta-readmore a, .text-bar p a, .text-bar h1 a, .text-bar h2 a, .text-bar h3 a, .text-bar h4 a, .text-bar h5 a, .text-bar h6 a, .nbs-flexisel-nav-left i, .nbs-flexisel-nav-right i  {
+	color: rgb(240, 100, 55) !important;	
+}
+
+header .header-line, .title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .pt-price { 
+	border-bottom: 3px solid rgb(240, 100, 55) !important;
+}
+
+.format-quote .post-media-wrap, .format-link .post-media-wrap, .jp-interface, .text-bar  {
+	border-left: 2px solid rgb(240, 100, 55) !important;
+}
+
+.footer-widgets, .testimonial-item blockquote, .nbs-flexisel-inner, .text-box, .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus, .pt-list, .panel-default > .panel-heading {
+	border-top: 2px solid rgb(240, 100, 55) !important;
+}
+
+.pt-column-premium {
+	-webkit-box-shadow: 0px 0px 0px 2pt rgb(240, 100, 55) !important;
+	   -moz-box-shadow: 0px 0px 0px 2pt rgb(240, 100, 55) !important;
+			box-shadow: 0px 0px 0px 2pt rgb(240, 100, 55) !important;
+}
+
+
+/* 50% BASIC COLOR */
+
+.header-text h3 a:hover, .header-title h3 a:hover, .text-bar p a:hover, .text-bar h1 a:hover, .text-bar h2 a:hover, .text-bar h3 a:hover, .text-bar h4 a:hover, .text-bar h5 a:hover, .text-bar h6 a:hover {
+	color: rgba(240, 100, .5) !important;
+}
+
+/* 20% BASIC COLOR */
+
+.header-text h3 a, .header-title h3 a, .text-bar p a, .text-bar h1 a, .text-bar h2 a, .text-bar h3 a, .text-bar h4 a, .text-bar h5 a, .text-bar h6 a {
+	border-bottom: 2px solid rgba(240, 100, .2) !important;
+}
+
+@media (max-width: 767px) {
+    .current_page_item > a {
+        background: rgb(240, 100, 55) !important;
+    }
+}

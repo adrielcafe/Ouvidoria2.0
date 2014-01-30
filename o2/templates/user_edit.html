@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+<div class="container">
+	<div class="title"><h2>{% trans "Edit Profile" %}</h2></div>
+	<main id="page-user-edit" class="row">
+		<div class="col-md-6 col-sm-6 animated fadeInLeft">
+			<form id="form-user-edit" method="post" action="/user/edit/" role="form">
+				{% csrf_token %}
+				
+				<div class="row">
+					<div class="form-group control-group col-md-6 col-sm-6">
+				    	<label for="first-name" class="control-label">{% trans "First Name" %} *</label>
+				    	<div class="controls">
+				    		<input type="text" class="form-control" id="first-name" name="first-name" value="{{user.first_name}}" maxlength="30" required>
+				    	</div>
+				  	</div>
+				  	<div class="form-group control-group col-md-6 col-sm-6">
+				    	<label for="last-name" class="control-label">{% trans "Last Name" %} *</label>
+				    	<div class="controls">
+				    		<input type="text" class="form-control" id="last-name" name="last-name" value="{{user.last_name}}" maxlength="30" required>
+				    	</div>
+				  	</div>
+				</div>
+				<div class="row">
+				  	<div class="form-group control-group col-md-6 col-sm-6">
+				    	<label for="email" class="control-label">Email *</label>
+				    	<div class="controls">
+				    		<input type="email" class="form-control" id="email" name="email" value="{{user.email}}" data-validation-email-message="Email inválido" data-validation-ajax-ajax="/validators/user/email/" required>
+				    		<p class="help-block"></p>
+				    	</div>
+				  	</div>
+				  	<div class="form-group control-group col-md-6 col-sm-6">
+				    	<label for="contact-info-website" class="control-label">Website</label>
+				    	<div class="controls">
+				    		<input type="url" class="form-control" id="contact-info-website" name="contact-info-website" value="{{user.contact_info.website}}">
+				    	</div>
+				  	</div>
+				</div>
+				<div class="row">
+				  	<div class="form-group control-group col-md-4 col-sm-4">
+				    	<label for="contact-info-country" class="control-label"><h5>{% trans "Country" %}</h5></label>
+				    	<div class="controls">
+						    <select id="contact-info-country" name="contact-info-country" data-live-search="true" data-width="100%">
+						    	<option selected>{% trans "Brazil" %}</option>
+						    </select>
+					    </div>
+				  	</div>
+				  	<div class="form-group control-group col-md-2 col-sm-2">
+				  		<label for="contact-info-state" class="control-label"><h5>{% trans "State" %}</h5></label>
+				  		<div class="controls">
+						    <select id="contact-info-state" name="contact-info-state" data-live-search="true" data-width="100%">
+						    </select>
+					    </div>
+				  	</div>
+				  	<div class="form-group control-group col-md-6 col-sm-6">
+				  		<label for="contact-info-city" class="control-label"><h5>{% trans "City" %}</h5></label>
+				  		<div class="controls">
+						    <select id="contact-info-city" name="contact-info-city" data-live-search="true" data-width="100%">
+						    </select>
+					    </div>
+				  	</div>
+				</div>
+				<div class="row">
+				  	<div class="form-group control-group col-md-6 col-sm-6">
+				    	<label for="birth-date" class="control-label">{% trans "Birth Date" %}</label>
+				    	<div class="controls">
+				    		<input type="text" id="birth-date" name="birth-date" class="form-control datepicker" data-mask="99/99/9999" value="{% if user.birth_date %}{{user.birth_date|date:"d/m/Y"}}{% endif %}">
+				    	</div>
+				  	</div>
+				  	<div class="form-group control-group col-md-6 col-sm-6">
+					  	<label for="gender" class="control-label">{% trans "Gender" %}</label>
+					  	<div class="controls">
+						  	<select id="gender" name="gender" data-width="100%">
+				      			<option value="" {% if user.gender == '' %} selected {% endif %}>{% trans "Not Specified" %}</option>
+				      			<option value="M" {% if user.gender == 'M' %} selected {% endif %}>{% trans "Male" %}</option>
+				      			<option value="F" {% if user.gender == 'F' %} selected {% endif %}>{% trans "Female" %}</option>
+						  	</select>
+					  	</div>
+				  	</div>
+				</div>
+				<div class="row">
+				  	<div class="form-group control-group col-md-12 col-sm-12">
+				    	<label for="about" class="control-label">{% trans "About You" %}</label>
+				    	<div class="controls">
+					  		<textarea id="about" name="about" class="form-control" rows="8" maxlength="500">{% if user.about %}{{user.about}}{% endif %}</textarea>
+					  	</div>
+				  	</div>
+				</div>
+				
+		  		<hr>
+		  		
+				<div class="row">
+				  	<div class="form-group control-group col-md-12 col-sm-12">
+			  			<button type="submit" class="btn btn-lg btn-default btn-block">{% trans "Save" %}</button>
+				  	</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-6 col-sm-6 animated fadeInRight">
+			<div class="row">
+			  	<div class="col-md-6 col-sm-6">
+			  		<button type="button" id="btn-update-picture" data-toggle="modal" data-target="#dlg-update-picture" class="btn btn-white full-width">{% trans "Update Picture" %}</button>
+			  	</div>
+			  	<div class="col-md-6 col-sm-6">
+			  		<button type="button" id="btn-update-password" data-toggle="modal" data-target="#dlg-update-password" class="btn btn-danger full-width disabled">{% trans "Update Password" %}</button>
+			  	</div>
+			</div>
+		  	<hr>
+			<div class="row">
+			  	<div class="col-md-12 col-sm-12">
+					{% if backends.associated%}
+						<h3>{% trans "Connected Networks" %}</h3>
+						<ul>
+						{% if backends.associated.count == 1  %}
+							{% for assoc in backends.associated %}
+						    	<li>
+						      	 	<div class="social-button {{ assoc.provider }}"><i class="fa fa-{{ assoc.provider }}"></i>{{ assoc.provider }}</div>
+				      	 		</li>
+						  	{% endfor %}
+						{% else %}
+					  		{% for assoc in backends.associated %}
+						    	<li>
+						      	 	<a href="{% url 'social:disconnect_individual' assoc.provider assoc.str_id %}" class="btn btn-danger disconnect"><i class="fa fa-times"></i></a>
+					    			<div class="social-button {{ assoc.provider }}"><i class="fa fa-{{ assoc.provider }}"></i>{{ assoc.provider }}</div>
+				      	 		</li>
+						  	{% endfor %}
+					  	{% endif %}
+						</ul>
+					{% endif%}
+					
+					{% if backends.not_associated%}
+						<h3>{% trans "Connect" %}</h3>
+						<ul>
+					  	{% for name in backends.not_associated %}
+					    	<li>
+					    		<a href="{% url 'social:begin' name %}" class="btn btn-success connect"><i class="fa fa-plus"></i></a>
+				    			<div class="social-button {{ name }}"><i class="fa fa-{{ name }}"></i>{{ name }}</div>
+					    	</li>
+					  	{% endfor %}
+						</ul>
+					{% endif%}
+			  	</div>
+			</div>
+		</div>
+	</main>
+</div>
+
+
+<div id="dlg-update-password" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			  	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		  		<h4 class="modal-title">{% trans "Update Password" %}</h4>
+			</div>
+			<form id="form-update-password" method="post" action="/user/edit/" role="form">
+				<div class="modal-body">
+					{% csrf_token %}
+			
+				  	<div class="form-group control-group">
+				    	<label for="current-password" class="control-label">{% trans "Current Password" %}</label>
+				    	<div class="controls">
+				    		<input type="password" class="form-control" id="current-password" name="current-password" maxlength="128">
+				    		<p class="help-block"></p>
+				    	</div>
+				  	</div>
+				  	<div class="form-group control-group">
+				    	<label for="new-password" class="control-label">{% trans "New Password" %}</label>
+				    	<div class="controls">
+				    		<input type="password" class="form-control" id="new-password" name="new-password" maxlength="128">
+				    		<p class="help-block"></p>
+				    	</div>
+				  	</div>
+				  	<div class="form-group control-group">
+				    	<label for="confirm-new-password" class="control-label">{% trans "Repeat New Password" %}</label>
+				    	<div class="controls">
+				    		<input type="password" class="form-control" id="confirm-new-password" name="confirm-new-password" maxlength="128">
+				    		<p class="help-block"></p>
+				    	</div>
+				  	</div>
+				</div>
+				<div class="modal-footer">
+		  			<button type="button" class="btn btn-white" data-dismiss="modal">{% trans "Cancel" %}</button>
+				  	<button type="submit" class="btn">{% trans "Save" %}</button>
+				</div>
+			</form>
+    	</div>
+	</div>
+</div>
+
+<div id="dlg-update-picture" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			  	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		  		<h4 class="modal-title">{% trans "Update Picture" %}</h4>
+			</div>
+			<form id="form-update-picture" method="post" action="/user/edit/" enctype="multipart/form-data" role="form">
+				<div class="modal-body">
+					{% csrf_token %}
+			
+				  	<div class="form-group control-group">
+						<div class="fileupload fileupload-new row" data-provides="fileupload">
+		  					<div class="col-md-5 col-sm-5">
+						  		<div class="fileupload-preview thumbnail">
+						  			<img src="/user/{{user.username}}/picture">
+						  		</div>
+					  		</div>
+		  					<div class="col-md-7 col-sm-7">
+							  	<div>
+								    <span class="fileupload-new">{% trans "Select a Picture" %}</span>
+								    <div class="controls">
+									    <input type="file" id="picture" name="picture" class="full-width" accept='image/jpeg, image/gif, image/png' required>
+									    <p class="help-block">{% trans "The image will be scaled to 200x200px" %}</p>
+								    </div>
+							  	</div>
+					  		</div>
+						</div>
+				  	</div>
+				</div>
+				<div class="modal-footer">
+		  			<button type="button" class="btn btn-white" data-dismiss="modal">{% trans "Cancel" %}</button>
+				  	<button type="submit" class="btn">{% trans "Save" %}</button>
+				</div>
+			</form>
+    	</div>
+	</div>
+</div>
+
+
+<script>
+	$('#content, #content > .container').css('padding-bottom', '0');
+	
+	$('#contact-info-state').carregaCidades('#contact-info-city');
+	$('#contact-info-state').change(function(){
+		$('#contact-info-city').selectpicker('refresh');
+	});
+	
+	$('#form-user-edit').submit(function(){
+		var errors = $('#form-user-edit input').jqBootstrapValidation("collectErrors");
+		if(!_.isEmpty(errors)){
+			alert('{% trans "Complete all the fields correctly" %}');
+			return false;
+		}
+	});
+	
+	$(function(){
+		{% if user.contact_info.country %}
+		$('#contact-info-country').selectpicker('val', '{{user.contact_info.country}}');
+		{% endif %}
+		$('#contact-info-state').selectpicker('val', '{{user.contact_info.state}}');
+		$('#contact-info-city').selectpicker('val', '{{user.contact_info.city}}');
+
+		{% if not user.birth_date %}
+		$('label[for="birth-date"]').popover({
+			content: '{% trans "When were you born?" %}',
+			placement: 'left'
+		}).popover('show');
+		{% endif %}
+		
+		{% if not user.gender %}
+		$('label[for="gender"]').popover({
+			content: '{% trans "Are you male or female?" %}',
+			placement: 'right'
+		}).popover('show');
+		{% endif %}
+		
+		{% if not user.contact_info.country or not user.contact_info.state or not user.contact_info.city  %}
+		$('label[for="contact-info-country"]').popover({
+			content: '{% trans "Where are you from?" %}',
+			placement: 'left'
+		}).popover('show');
+		{% endif %}
+		
+		{% if not user.picture %}
+		$('#btn-update-picture').popover({
+			content: '{% trans "Add a picture" %}',
+			placement: 'top'
+		}).popover('show');
+		{% endif %}
+		
+		$('#form-update-password').submit(function() {
+            $.ajax({
+                data: $(this).serialize(), 
+                type: 'POST',
+                url: '/user/edit/', 
+                success: function(response) { 
+                    console.log(response);
+                }
+            });
+            return false;
+        });
+	});
+</script>
+{% endblock %}

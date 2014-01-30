@@ -1,0 +1,488 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-27 00:16-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\templates\404.html.py:11
+msgid "Error 404"
+msgstr "Erro 404"
+
+#: .\templates\404.html.py:12
+msgid "Page not found"
+msgstr "Página não encontrada"
+
+#: .\templates\404.html.py:14
+msgid "Go back to starter page"
+msgstr "Voltar para página inicial"
+
+#: .\templates\base.html.py:10 .\templates\base.html.py:12
+#: .\templates\base.html.py:17 .\templates\base.html.py:185
+msgid "O²: Ombudsman Office 2.0"
+msgstr "O²: Ouvidoria 2.0"
+
+#: .\templates\base.html.py:77 .\templates\base.html.py:189
+msgid "Home"
+msgstr "Início"
+
+#: .\templates\base.html.py:79 .\templates\ombudsman.html.py:9
+#: .\templates\user_view.html.py:64
+msgid "Ombudsman Offices"
+msgstr "Ouvidorias"
+
+#: .\templates\base.html.py:83 .\templates\base.html.py:236
+#: .\templates\ombudsman_new.html.py:6
+msgid "New Ombudsman Office"
+msgstr "Nova Ouvidoria"
+
+#: .\templates\base.html.py:88 .\templates\users.html.py:9
+msgid "People"
+msgstr "Pessoas"
+
+#: .\templates\base.html.py:89 .\templates\base.html.py:190
+#: .\templates\ombudsman_edit.html.py:34 .\templates\ombudsman_new.html.py:35
+#: .\templates\ombudsman_view.html.py:22 .\templates\user_view.html.py:21
+msgid "About"
+msgstr "Sobre"
+
+#: .\templates\base.html.py:93 .\templates\base.html.py:101
+msgid "View Profile"
+msgstr "Ver Perfil"
+
+#: .\templates\base.html.py:95 .\templates\base.html.py:103
+#: .\templates\user_edit.html.py:7
+msgid "Edit Profile"
+msgstr "Editar Perfil"
+
+#: .\templates\base.html.py:96 .\templates\base.html.py:104
+msgid "Logout"
+msgstr "Sair"
+
+#: .\templates\base.html.py:110 .\templates\index.html.py:24
+#: .\templates\login.html.py:7 .\templates\login.html.py:50
+msgid "Log In"
+msgstr "Entrar"
+
+#: .\templates\base.html.py:185
+msgid "All rights reserved"
+msgstr "Todos os direitos reservados"
+
+#: .\templates\base.html.py:191
+msgid "Help"
+msgstr "Ajuda"
+
+#: .\templates\base.html.py:192
+msgid "FAQ"
+msgstr "FAQ"
+
+#: .\templates\base.html.py:193 .\templates\user_view.html.py:146
+msgid "Contact"
+msgstr "Contato"
+
+#: .\templates\base.html.py:211 .\templates\index.html.py:23
+msgid "Sign Up"
+msgstr "Registre-se"
+
+#: .\templates\base.html.py:216
+msgid "New User"
+msgstr "Novo Usuário"
+
+#: .\templates\base.html.py:237
+msgid "Create New Ombudsman Office"
+msgstr "Criar Nova Ouvidoria"
+
+#: .\templates\called_view.html.py:21
+msgid "Created By"
+msgstr "Criado Por"
+
+#: .\templates\called_view.html.py:25
+msgid "Category"
+msgstr "Categoria"
+
+#: .\templates\called_view.html.py:29
+msgid "Creation Date"
+msgstr "Data de Criação"
+
+#: .\templates\called_view.html.py:35
+msgid "Share"
+msgstr "Compartilhar"
+
+#: .\templates\called_view.html.py:45
+msgid "Comments"
+msgstr "Comentários"
+
+#: .\templates\called_view.html.py:86
+msgid "About the Ombudsman Office"
+msgstr "Sobre a Ouvidoria"
+
+#: .\templates\called_view.html.py:95 .\templates\ombudsman_view.html.py:147
+#: .\templates\user_view.html.py:74
+msgid "Ombudsman"
+msgstr "Ouvidores"
+
+#: .\templates\called_view.html.py:103 .\templates\ombudsman.html.py:112
+#: .\templates\users.html.py:97
+msgid "Details"
+msgstr "Detalhes"
+
+#: .\templates\index.html.py:14 .\templates\index.html.py:49
+#: .\templates\user_view.html.py:108
+msgid "Ombudsman Office"
+msgstr "Ouvidoria"
+
+#: .\templates\index.html.py:15
+msgid "webcitizen"
+msgstr "webcidadania"
+
+#: .\templates\index.html.py:15
+msgid "government2.0"
+msgstr "governo2.0"
+
+#: .\templates\index.html.py:24
+msgid "or"
+msgstr "ou"
+
+#: .\templates\index.html.py:35
+msgid "The Ombudsman Offices"
+msgstr "As Ouvidorias"
+
+#: .\templates\index.html.py:41 .\templates\index.html.py:69
+msgid "View All"
+msgstr "Ver Todas"
+
+#: .\templates\index.html.py:55
+msgid "More Info"
+msgstr "Saiba Mais"
+
+#: .\templates\index.html.py:63
+msgid "The Community"
+msgstr "A Comunidade"
+
+#: .\templates\login.html.py:10
+msgid "I'm a User"
+msgstr "Sou Usuário"
+
+#: .\templates\login.html.py:30
+msgid "I'm a Ombudsman Office"
+msgstr "Sou Ouvidoria"
+
+#: .\templates\login.html.py:36 .\templates\ombudsman_new.html.py:74
+#: .\templates\users.html.py:36
+msgid "Username"
+msgstr "Nome de Usuário"
+
+#: .\templates\login.html.py:42 .\templates\ombudsman_new.html.py:83
+msgid "Password"
+msgstr "Senha"
+
+#: .\templates\ombudsman.html.py:13 .\templates\ombudsman_view.html.py:85
+#: .\templates\user_view.html.py:124 .\templates\users.html.py:13
+msgid "Order by"
+msgstr "Ordenar por"
+
+#: .\templates\ombudsman.html.py:24 .\templates\ombudsman_view.html.py:100
+#: .\templates\user_view.html.py:139 .\templates\users.html.py:24
+msgid "More Results"
+msgstr "Mais Resultados"
+
+#: .\templates\ombudsman.html.py:32 .\templates\ombudsman.html.py:81
+#: .\templates\ombudsman_view.html.py:63 .\templates\user_view.html.py:99
+#: .\templates\users.html.py:32 .\templates\users.html.py:73
+msgid "Search"
+msgstr "Pesquisar"
+
+#: .\templates\ombudsman.html.py:36 .\templates\ombudsman_edit.html.py:15
+#: .\templates\ombudsman_new.html.py:16
+msgid "Name"
+msgstr "Nome"
+
+#: .\templates\ombudsman.html.py:40 .\templates\ombudsman_edit.html.py:23
+#: .\templates\ombudsman_new.html.py:24 .\templates\ombudsman_view.html.py:132
+msgid "Institution Type"
+msgstr "Tipo de Instituição"
+
+#: .\templates\ombudsman.html.py:44 .\templates\users.html.py:55
+msgid "All"
+msgstr "Todas"
+
+#: .\templates\ombudsman.html.py:50 .\templates\ombudsman_edit.html.py:26
+#: .\templates\ombudsman_new.html.py:27
+msgid "Public"
+msgstr "Pública"
+
+#: .\templates\ombudsman.html.py:56 .\templates\ombudsman_edit.html.py:27
+#: .\templates\ombudsman_new.html.py:28
+msgid "Private"
+msgstr "Privada"
+
+#: .\templates\ombudsman.html.py:62 .\templates\ombudsman_edit.html.py:81
+#: .\templates\ombudsman_new.html.py:129 .\templates\user_edit.html.py:44
+msgid "Country"
+msgstr "Pais"
+
+#: .\templates\ombudsman.html.py:64 .\templates\user_edit.html.py:47
+msgid "Brazil"
+msgstr "Brasil"
+
+#: .\templates\ombudsman.html.py:69 .\templates\ombudsman_edit.html.py:89
+#: .\templates\ombudsman_new.html.py:137 .\templates\user_edit.html.py:52
+msgid "State"
+msgstr "Estado"
+
+#: .\templates\ombudsman.html.py:70 .\templates\ombudsman.html.py:76
+msgid "Select"
+msgstr "Selecione"
+
+#: .\templates\ombudsman.html.py:75 .\templates\ombudsman_edit.html.py:96
+#: .\templates\ombudsman_new.html.py:144 .\templates\user_edit.html.py:59
+msgid "City"
+msgstr "Cidade"
+
+#: .\templates\ombudsman_edit.html.py:6
+msgid "Edit My Ombudsman Office"
+msgstr "Editar Minha Ouvidoria"
+
+#: .\templates\ombudsman_edit.html.py:12 .\templates\ombudsman_new.html.py:13
+#: .\templates\ombudsman_view.html.py:107
+msgid "About the Institution"
+msgstr "Sobre a Instituição"
+
+#: .\templates\ombudsman_edit.html.py:41 .\templates\ombudsman_new.html.py:42
+#: .\templates\ombudsman_view.html.py:72
+msgid "Categories"
+msgstr "Categorias"
+
+#: .\templates\ombudsman_edit.html.py:45 .\templates\ombudsman_new.html.py:46
+msgid "Type in the category name and press ENTER to add it"
+msgstr "Digite o nome da categoria e pressione ENTER para adicioná-la"
+
+#: .\templates\ombudsman_edit.html.py:49 .\templates\ombudsman_new.html.py:97
+msgid "Contact Info"
+msgstr "Informações de Contato"
+
+#: .\templates\ombudsman_edit.html.py:67 .\templates\ombudsman_edit.html.py:73
+#: .\templates\ombudsman_new.html.py:115 .\templates\ombudsman_new.html.py:121
+msgid "Phone Number"
+msgstr "Telefone"
+
+#: .\templates\ombudsman_edit.html.py:105
+#: .\templates\ombudsman_new.html.py:153
+msgid "Address"
+msgstr "Endereço"
+
+#: .\templates\ombudsman_edit.html.py:116
+#: .\templates\ombudsman_edit.html.py:172
+#: .\templates\ombudsman_edit.html.py:211 .\templates\user_edit.html.py:97
+#: .\templates\user_edit.html.py:179 .\templates\user_edit.html.py:218
+msgid "Save"
+msgstr "Salvar"
+
+#: .\templates\ombudsman_edit.html.py:123
+#: .\templates\ombudsman_edit.html.py:184 .\templates\user_edit.html.py:105
+#: .\templates\user_edit.html.py:191
+msgid "Update Picture"
+msgstr "Atualizar Imagem"
+
+#: .\templates\ombudsman_edit.html.py:126
+#: .\templates\ombudsman_edit.html.py:141 .\templates\user_edit.html.py:108
+#: .\templates\user_edit.html.py:149
+msgid "Update Password"
+msgstr "Atualizar Senha"
+
+#: .\templates\ombudsman_edit.html.py:148 .\templates\user_edit.html.py:156
+msgid "Current Password"
+msgstr "Senha Atual"
+
+#: .\templates\ombudsman_edit.html.py:155 .\templates\user_edit.html.py:163
+msgid "New Password"
+msgstr "Nova Senha"
+
+#: .\templates\ombudsman_edit.html.py:162 .\templates\user_edit.html.py:170
+msgid "Repeat New Password"
+msgstr "Repetir Nova Senha"
+
+#: .\templates\ombudsman_edit.html.py:171
+#: .\templates\ombudsman_edit.html.py:210
+#: .\templates\ombudsman_new.html.py:164
+#: .\templates\ombudsman_view.html.py:203 .\templates\user_edit.html.py:178
+#: .\templates\user_edit.html.py:217
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: .\templates\ombudsman_edit.html.py:199 .\templates\ombudsman_new.html.py:60
+#: .\templates\user_edit.html.py:206
+msgid "Select a Picture"
+msgstr "Selecione a imagem"
+
+#: .\templates\ombudsman_edit.html.py:202 .\templates\ombudsman_new.html.py:63
+#: .\templates\user_edit.html.py:209
+msgid "The image will be scaled to 200x200px"
+msgstr "A imagem será ajustada para 200x200px"
+
+#: .\templates\ombudsman_edit.html.py:229
+#: .\templates\ombudsman_new.html.py:180 .\templates\user_edit.html.py:237
+msgid "Complete all the fields correctly"
+msgstr "Complete todos os campos corretamente"
+
+#: .\templates\ombudsman_edit.html.py:253 .\templates\user_edit.html.py:272
+msgid "Add a picture"
+msgstr "Adicione uma Imagem"
+
+#: .\templates\ombudsman_new.html.py:50
+msgid "Picture"
+msgstr "Imagem"
+
+#: .\templates\ombudsman_new.html.py:71
+msgid "Log In Info"
+msgstr "Informações para Acesso"
+
+#: .\templates\ombudsman_new.html.py:89
+msgid "Repeat Password"
+msgstr "Repetir Senha"
+
+#: .\templates\ombudsman_new.html.py:163
+msgid "Create"
+msgstr "Criar"
+
+#: .\templates\ombudsman_new.html.py:186
+msgid "General"
+msgstr "Geral"
+
+#: .\templates\ombudsman_view.html.py:12 .\templates\user_view.html.py:11
+msgid "Edit"
+msgstr "Editar"
+
+#: .\templates\ombudsman_view.html.py:30
+msgid "Total of Tickets"
+msgstr "Total de Chamados"
+
+#: .\templates\ombudsman_view.html.py:36
+msgid "Subscribers Users"
+msgstr "Usuários Inscritos"
+
+#: .\templates\ombudsman_view.html.py:42
+#: .\templates\ombudsman_view.html.py:172
+msgid "New Ticket"
+msgstr "Novo Chamado"
+
+#: .\templates\ombudsman_view.html.py:48
+msgid "Unsubscribe"
+msgstr "Cancelar Participação"
+
+#: .\templates\ombudsman_view.html.py:50
+msgid "Subscribe"
+msgstr "Participar"
+
+#: .\templates\ombudsman_view.html.py:59 .\templates\user_view.html.py:95
+msgid "Tickets"
+msgstr "Chamados"
+
+#: .\templates\ombudsman_view.html.py:69
+#: .\templates\ombudsman_view.html.py:179 .\templates\user_view.html.py:105
+msgid "Title"
+msgstr "Título"
+
+#: .\templates\ombudsman_view.html.py:74 .\templates\user_view.html.py:110
+msgid "ALL"
+msgstr "TODOS"
+
+#: .\templates\ombudsman_view.html.py:138 .\templates\user_view.html.py:52
+msgid "Member Since"
+msgstr "Membro Desde"
+
+#: .\templates\ombudsman_view.html.py:196
+msgid "Description"
+msgstr "Descrição"
+
+#: .\templates\ombudsman_view.html.py:204
+msgid "Open Ticket"
+msgstr "Abrir Chamado"
+
+#: .\templates\ombudsman_view.html.py:255
+msgid "Created by"
+msgstr "Criado por"
+
+#: .\templates\ombudsman_view.html.py:258 .\templates\user_view.html.py:199
+msgid "Created in"
+msgstr "Criado em"
+
+#: .\templates\ombudsman_view.html.py:263 .\templates\user_view.html.py:204
+msgid "View"
+msgstr "Ver"
+
+#: .\templates\user_edit.html.py:15 .\templates\users.html.py:41
+msgid "First Name"
+msgstr "Primeiro Nome"
+
+#: .\templates\user_edit.html.py:21 .\templates\users.html.py:46
+msgid "Last Name"
+msgstr "Último Nome"
+
+#: .\templates\user_edit.html.py:68
+msgid "Birth Date"
+msgstr "Data de Nascimento"
+
+#: .\templates\user_edit.html.py:74 .\templates\user_view.html.py:30
+#: .\templates\users.html.py:51
+msgid "Gender"
+msgstr "Sexo"
+
+#: .\templates\user_edit.html.py:77
+msgid "Not Specified"
+msgstr "Não Especificado"
+
+#: .\templates\user_edit.html.py:78 .\templates\user_view.html.py:33
+#: .\templates\users.html.py:61
+msgid "Male"
+msgstr "Masculino"
+
+#: .\templates\user_edit.html.py:79 .\templates\user_view.html.py:35
+#: .\templates\users.html.py:67
+msgid "Female"
+msgstr "Feminino"
+
+#: .\templates\user_edit.html.py:86
+msgid "About You"
+msgstr "Sobre Você"
+
+#: .\templates\user_edit.html.py:115
+msgid "Connected Networks"
+msgstr "Redes Conectadas"
+
+#: .\templates\user_edit.html.py:127
+msgid "Connect"
+msgstr "Conecte-se"
+
+#: .\templates\user_edit.html.py:251
+msgid "When were you born?"
+msgstr "Quando você nasceu?"
+
+#: .\templates\user_edit.html.py:258
+msgid "Are you male or female?"
+msgstr "Você é homem ou mulher?"
+
+#: .\templates\user_edit.html.py:265
+msgid "Where are you from?"
+msgstr "De onde você é?"
+
+#: .\templates\user_view.html.py:44
+msgid "Age"
+msgstr "Idade"
+
+#: .\templates\user_view.html.py:45
+msgid "years old"
+msgstr "anos"

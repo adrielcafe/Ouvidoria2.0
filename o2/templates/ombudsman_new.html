@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+	<div class="title"><h2>{% trans "New Ombudsman Office" %}</h2></div>
+	<main id="page-ombudsman-new">
+		<form id="form-ombudsman-new" method="post" action="/ombudsman/new/" enctype="multipart/form-data" role="form">
+			{% csrf_token %}
+			
+			<div class="row">
+				<div class="col-md-6 col-sm-6 animated fadeInLeft">
+					<h3>{% trans "About the Institution" %}</h3>
+					<div class="row">
+						<div class="form-group control-group col-md-12 col-sm-12">
+					    	<label for="name" class="control-label">{% trans "Name" %} *</label>
+					    	<div class="controls">
+					    		<input type="text" class="form-control" id="name" name="name" maxlength="100" required>
+					    	</div>
+					  	</div>
+					</div>
+					<div class="row">
+						<div class="form-group control-group col-md-6 col-sm-6">
+					    	<label for="type" class="control-label">{% trans "Institution Type" %} *</label>
+					    	<div class="controls">
+							  	<select id="type" name="type" data-width="100%">
+							    	<option selected>{% trans "Public" %}</option>
+							    	<option selected>{% trans "Private" %}</option>
+							    </select>
+						    </div>
+					  	</div>
+					</div>
+					<div class="row">
+						<div class="form-group control-group col-md-12 col-sm-12">
+					    	<label for="about" class="control-label">{% trans "About" %}</label>
+					    	<div class="controls">
+						  		<textarea id="about" name="about" class="form-control" rows="5" maxlength="500"></textarea>
+						  	</div>
+					  	</div>
+					</div>
+					
+					<h3>{% trans "Categories" %} *</h3>
+					<div class="row">
+						<div class="form-group control-group col-md-12 col-sm-12">
+					    	<input type="text" class="form-control" id="categories" name="categories" data-role="tagsinput" required>
+					    	<p class="help-block">{% trans "Type in the category name and press ENTER to add it" %}</p>
+					  	</div>
+					</div>
+					
+					<h3>{% trans "Picture" %}</h3>
+					<div class="fileupload fileupload-new row" data-provides="fileupload">
+						<div class="form-group control-group">
+		  					<div class="col-md-5 col-sm-5">
+						  		<div class="fileupload-preview thumbnail">
+						  			<img src="/static/img/ombudsman-avatar.jpg">
+						  		</div>
+					  		</div>
+		  					<div class="col-md-7 col-sm-7">
+							  	<div>
+								    <span class="fileupload-new">{% trans "Select a Picture" %}</span>
+								    <div class="controls">
+									    <input type="file" id="picture" name="picture" class="full-width" accept='image/jpeg, image/gif, image/png'>
+									    <p class="help-block">{% trans "The image will be scaled to 200x200px" %}</p>
+								    </div>
+							  	</div>
+					  		</div>
+						</div>
+				  	</div>
+				</div>
+				<div class="col-md-6 col-sm-6 animated fadeInRight">
+					<h3>{% trans "Log In Info" %}</h3>
+					<div class="row">
+						<div class="form-group control-group col-md-6 col-sm-6">
+					    	<label for="username" class="control-label">{% trans "Username" %} *</label>
+					    	<div class="controls">
+						    	<input type="text" class="form-control" id="username" name="username" maxlength="30" pattern="\w+" data-validation-pattern-message="Apenas letras e números" data-validation-ajax-ajax="/validators/user/username/" required>
+						    	<p class="help-block"></p>
+					    	</div>
+					  	</div>
+					</div>
+					<div class="row">
+						<div class="form-group control-group col-md-6 col-sm-6">
+					    	<label for="password" class="control-label">{% trans "Password" %} *</label>
+					    	<div class="controls">
+					    		<input type="password" class="form-control" id="password" name="password" maxlength="128" required>
+					    	</div>
+					  	</div>
+						<div class="form-group control-group col-md-6 col-sm-6">
+					    	<label for="confirm-password" class="control-label">{% trans "Repeat Password" %} *</label>
+					    	<div class="controls">
+					    		<input type="password" class="form-control" id="confirm-password" name="confirm-password" maxlength="128" data-validation-match-match="password" data-validation-match-message="Confirmação de senha incorreta">
+					    		<p class="help-block"></p>
+					    	</div>
+						</div>
+					</div>
+									
+					<h3>{% trans "Contact Info" %}</h3>
+					<div class="row">
+						<div class="form-group control-group col-md-6 col-sm-6">
+					    	<label for="email" class="control-label">Email *</label>
+					    	<div class="controls">
+					    		<input type="email" class="form-control" id="email" name="email" data-validation-email-message="Email inválido" data-validation-ajax-ajax="/validators/user/email/" required>
+					    		<p class="help-block"></p>
+				    		</div>
+					  	</div>
+						<div class="form-group control-group col-md-6 col-sm-6">
+					    	<label for="contact-info-website" class="control-label">Website</label>
+					    	<div class="controls">
+					    		<input type="text" class="form-control" id="contact-info-website" name="contact-info-website">
+					    	</div>
+					  	</div>
+					</div>
+					<div class="row">
+						<div class="form-group control-group col-md-6 col-sm-6">
+					    	<label for="contact-info-phone-1" class="control-label">{% trans "Phone Number" %} 1 *</label>
+					    	<div class="controls">
+					    		<input type="text" class="form-control" id="contact-info-phone-1" name="contact-info-phone-1" required>
+					    	</div>
+					  	</div>
+						<div class="form-group control-group col-md-6 col-sm-6">
+					    	<label for="contact-info-phone-2" class="control-label">{% trans "Phone Number" %} 2</label>
+					    	<div class="controls">
+					    		<input type="text" class="form-control" id="contact-info-phone-2" name="contact-info-phone-2">
+					    	</div>
+					  	</div>
+					</div>
+					<div class="row">
+					  	<div class="form-group control-group col-md-4 col-sm-4">
+					    	<label for="contact-info-country" class="control-label"><h5>{% trans "Country" %} *</h5></label>
+					    	<div class="controls">
+							    <select id="contact-info-country" name="contact-info-country" data-live-search="true" data-width="100%" required>
+							    	<option selected>Brasil</option>
+							    </select>
+						    </div>
+					  	</div>
+					  	<div class="form-group control-group col-md-2 col-sm-2">
+					  		<label for="contact-info-state" class="control-label"><h5>{% trans "State" %} *</h5></label>
+					  		<div class="controls">
+							    <select id="contact-info-state" name="contact-info-state" data-live-search="true" data-width="100%" required>
+							    </select>
+						    </div>
+					  	</div>
+					  	<div class="form-group control-group col-md-6 col-sm-6">
+					  		<label for="contact-info-city" class="control-label"><h5>{% trans "City" %} *</h5></label>
+					  		<div class="controls">
+							    <select id="contact-info-city" name="contact-info-city" data-live-search="true" data-width="100%" required>
+							    </select>
+						    </div>
+					  	</div>
+					</div>
+					<div class="row">
+						<div class="form-group control-group col-md-12 col-sm-12">
+					    	<label for="contact-info-address" class="control-label">{% trans "Address" %} *</label>
+					    	<div class="controls">
+					    		<input type="text" class="form-control" id="contact-info-address" name="contact-info-address" required>
+					    	</div>
+					  	</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			  	<div class="col-md-12 col-sm-12">
+				  	<button type="submit" class="btn pull-right">{% trans "Create" %}</button>
+		  			<a href="/" class="btn btn-white pull-right">{% trans "Cancel" %}</a>
+			  	</div>
+			</div>
+		</form>
+	</main>
+</div>
+
+<script>
+	$('#contact-info-state').carregaCidades('#contact-info-city');
+	$('#contact-info-state').change(function(){
+		$('#contact-info-city').selectpicker('refresh');
+	});
+	
+	$('#form-ombudsman-new').submit(function(){
+		var errors = $('#form-ombudsman-new input').not("[type='file']").jqBootstrapValidation("collectErrors");
+		if(!_.isEmpty(errors) && !_.isEmpty(errors[''])){
+			alert('{% trans "Complete all the fields correctly" %}');
+			return false;
+		}
+	});	
+	
+	$(function(){
+		$('#categories').tagsinput('add', '{% trans "General" %}');
+	});
+</script>
+{% endblock %}

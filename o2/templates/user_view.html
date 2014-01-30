@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+	<div id="page-user-view" class="row animated fadeInLeft">
+		<main class="col-md-9 col-sm-9">
+			<div class="panel panel-primary margin-bot">
+		  		<div class="panel-heading">
+		  			{%  if user.id == obj.id and user.group.name == 'users' %}
+			    	<a href="/user/edit" id="btn-edit" class="btn btn-white pull-right">{% trans "Edit" %}</a>
+			    	{% endif %}
+			    	<h3>{{ obj.first_name }} {{ obj.last_name }}</h3>
+			  	</div>
+			  	<div class="row panel-body">
+			    	<div class="col-md-3 col-sm-3">
+			      		<img src="/user/{{ obj.username }}/picture" class="img-responsive img-thumbnail">
+			    	</div>
+			    	<div class="col-md-9 col-sm-9">
+						<details open>
+					  		<summary><strong>{% trans "About" %}</strong></summary>
+					  		<p>{% if obj.about %}{{ obj.about|escape|safe }}{% endif %}</p>
+						</details>
+			    	</div>
+			  	</div>
+			  	<div class="row panel-footer">
+		  			{% if obj.gender %}
+			  		<div class="col-md-2 col-sm-2">
+			    		<dl>
+					  		<dt>{% trans "Gender" %}</dt>
+						  	<dd>
+								{% if obj.gender == 'M' %}
+									{% trans "Male" %}
+								{% else %}
+									{% trans "Female" %}
+								{% endif %}
+							</dd>
+						</dl>
+			    	</div>
+					{% endif %}
+				  	{% if obj.birth_date %}
+			  		<div class="col-md-2 col-sm-2">
+						<dl>
+						  	<dt>{% trans "Age" %}</dt>
+					  		<dd><time datetime='{{ obj.birth_date|date:"Y-m-d" }}'>{{ obj.age }}</time> {% trans "years old" %}</dd>
+						</dl>
+			    	</div>
+				  	{% endif %}
+				  	{% if obj.date_joined %}
+					<div class="col-md-2 col-sm-2">
+						<dl>
+				  			<dt>{% trans "Member Since" %}</dt>
+						  	<dd><time datetime='{{ obj.date_joined|date:"Y-m-d" }}'>{{ obj.date_joined|date:"d/m/Y" }}</time></dd>
+						</dl>
+			    	</div>
+				  	{% endif %}
+			  		<div class="col-md-3 col-sm-3">
+						
+			    	</div>
+				</div>
+			</div>
+			<div id="ombudsman" class="panel panel-primary">
+		  		<div class="panel-heading">
+			    	<h4>{% trans "Ombudsman Offices" %}</h4>
+			  	</div>
+			  	<div class="panel-body">
+				  	<div class="row" style="text-align: center;">
+				  		{% for ombudsman in obj.ombudsman_ombudsman %}
+						  	<div class="flip-effect">
+								<div class="card" class="shadow">
+							  		<div class="front face">
+								    	<img src="/ombudsman/{{ ombudsman.slug }}/picture"/>
+								  	</div>
+								  	<div class="back face center">
+								    	<h3>{{ ombudsman.name }}</h3>
+							        	<span class="label label-success">{% trans "Ombudsman" %}</span>
+										<a href="/ombudsman/{{ ombudsman.slug }}" class="btn btn-small full-width">{% trans "View" %}</a>
+								  	</div>
+								</div>
+							</div>
+				  		{% endfor %}
+				  		{% for ombudsman in obj.ombudsman_user %}
+							<div class="flip-effect">
+								<div class="card shadow">
+							  		<div class="front face">
+								    	<img src="/ombudsman/{{ ombudsman.slug }}/picture"/>
+								  	</div>
+								  	<div class="back face center">
+								    	<h3>{{ ombudsman.name }}</h3>
+										<a href="/ombudsman/{{ ombudsman.slug }}" class="btn btn-small">{% trans "View" %}</a>
+								  	</div>
+								</div>
+							</div>
+				  		{% endfor %}
+	 				</div>
+	            </div>
+			</div>
+			<div id="tickets" class="panel panel-primary">
+		  		<div class="panel-heading">
+			    	<h4>{% trans "Tickets" %}</h4>
+			  	</div>
+			  	<div class="panel-body">
+				  	<div class="title">
+				  		<h5>{% trans "Search" %}</h5>
+				  	</div>
+				  	<div class="row">
+				  		<div class="col-md-9 col-sm-9">
+					  		<form role="form">
+						  		<div class="form-group">
+							    	<input id="ticket-title" type="text" class="form-control" placeholder="{% trans "Title" %}">
+							  	</div>
+						  		<div class="form-group">
+						  		 	<label>{% trans "Ombudsman Office" %}</label>
+						    		<select id="ticket-ombudsman" title="Ouvidoria">
+						      			<option value="ALL">{% trans "ALL" %}</option>
+							      		{% for ombudsman in obj.ombudsman_ombudsman %}
+							      			<option value="{{ ombudsman.id }}">{{ ombudsman.name }}</option>
+							      		{% endfor %}
+							      		{% for ombudsman in obj.ombudsman_user %}
+							      			<option value="{{ ombudsman.id }}">{{ ombudsman.name }}</option>
+							      		{% endfor %}
+								  	</select>
+									<button id="search" type="submit" class="btn pull-right disabled"><i class="fa fa-search"></i></button>
+							  	</div>
+						  	</form>
+				  		</div>
+				 		<div class="col-md-3 col-sm-3">
+						  	<div class="filter-order">
+						   		<a href="#" data-sortable-label="Filter projects" id="sort-portfolio">{% trans "Order by" %}<i class="fa fa-th-large"></i></a>
+						        <ul id="filters">
+						          	<li><a href="#" data-filter=".a-z" class="active">Ordem Alfabética (A-Z)</a></li>
+						          	<li><a href="#" data-filter=".z-a">Ordem Alfabética (Z-A)</a></li>
+					         		<li><a href="#" data-filter=".category">Mais Recentes</a></li>
+					         		<li><a href="#" data-filter=".category">Mais Antigas</a></li>
+						        </ul>
+			        		</div>
+				  		</div>
+				  	</div>
+	    			<hr>
+	    			<ul id="list-items" class="list-group">
+		            </ul>
+	            </div>
+			  	<div class="panel-footer text-center">
+	            	<a id="more-results" class="btn btn-sm">{% trans "More Results" %}</a>
+				</div>
+			</div>
+		</main>
+		<aside class="col-md-3 col-sm-3 sidebar animated flipInY">
+			<div class="widget">
+				<div class="title">
+					<h4>{% trans "Contact" %}</h4>
+				</div>
+				<div class="text-box">
+				  	{% if obj.email %}
+						<a href="mailto:{{ obj.email }}"><i class="fa fa-envelope"></i> {{ obj.email }}</a><br>
+				  	{% endif %}
+				  	{% if obj.contact_info.website %}
+						<a href="{{ obj.contact_info.website }}" target="_blank"><i class="fa fa-external-link"></i> {{ obj.contact_info.website }}</a><br>
+				  	{% endif %}
+				  	<address>
+				  	{% if obj.contact_info.country and obj.contact_info.state and obj.contact_info.city %}
+						<i class="fa fa-map-marker"></i> {{ obj.contact_info.city }}, {{ obj.contact_info.state }} - {{ obj.contact_info.country }}<br>
+				  	{% endif %}
+				  	{% if obj.contact_info.address %}
+						<i class="fa fa-map-marker"></i> {{ obj.contact_info.address }}<br>
+				  	{% endif %}
+					</address>
+				  	{% if obj.contact_info.phones %}
+						{% for phone in obj.contact_info.phones %}
+					 		<a href="tel:{{ phone }}"><i class="fa fa-phone"></i> {{ phone }}</a><br>
+					 	{% endfor %}
+				  	{% endif %}
+	            </div>
+			</div>
+		</aside>
+	</div>
+</div>
+
+<script>
+	var userId = '{{ obj.id }}';
+	var userUsername = '{{ obj.username }}';
+</script>
+{% endblock %}
+
+{% block templates %}
+<script type="text/html" id="tpl-ticket">
+	<% _.each(objects, function(obj) { %>
+		<%
+			var created_in_i18n = moment(obj.log.created_in).format('MM-DD-YYYY');
+			var created_in = moment(obj.log.created_in).format('DD/MM/YYYY');
+		%>
+		<li class="list-group-item animated fadeIn">
+	    	<div class="row">
+				<div class="col-md-10 col-sm-9">
+					<h5><a href="/ombudsman/<%= obj.belongs_to.slug %>/ticket/<%= obj.slug %>"><%= obj.title %></a></h5>
+			    	<div class="row">
+						<div class="col-md-3 col-sm-3">
+				        	<a href="/ombudsman/<%= obj.belongs_to.slug %>"><%= obj.belongs_to.name %></a>
+						</div>
+						<div class="col-md-3 col-sm-3">
+							<%= obj.category %>
+						</div>
+						<div class="col-md-3 col-sm-3">
+				        	{% trans "Created in" %} <time datetime="<%= created_in_i18n %>"><%= created_in %></time>
+						</div>
+					</div>
+				</div>
+				<div class="list-group-item-buttons flexbox-center col-md-2 col-sm-3">
+			    	<a href="/ombudsman/<%= obj.belongs_to.slug %>/ticket/<%= obj.slug %>" class="btn btn-small">{% trans "View" %}</a>
+				</div>
+			</div>
+		</li>
+	<% }); %>
+</script>
+{% endblock %}

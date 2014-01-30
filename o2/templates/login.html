@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+<div class="container">
+	<div class="title"><h2>{% trans "Log In" %}</h2></div>
+	<div id="page-login" class="row">
+		<div class="col-md-5 col-sm-5 animated fadeInLeft">
+			<h3>{% trans "I'm a User" %}</h3>
+			<ul>
+           		<li>
+  	 				<a href="{% url 'social:begin' "facebook" %}" class="social-button facebook"><i class="fa fa-facebook"></i>Facebook</a>
+	 			</li>
+           		<li>
+  	 				<a href="{% url 'social:begin' "twitter" %}" class="social-button twitter"><i class="fa fa-twitter"></i>Twitter</a>
+ 				</li>
+           		<li>
+  	 				<a href="{% url 'social:begin' "google-oauth2" %}" class="social-button google"><i class="fa fa-google-plus"></i>Google</a>
+ 				</li>
+          		<li>
+  	 				<a href="{% url 'social:begin' "foursquare" %}" class="social-button foursquare"><i class="fa fa-foursquare"></i>Foursquare</a>
+	 			</li>
+           		<li>
+  	 				<a href="{% url 'social:begin' "linkedin" %}" class="social-button linkedin"><i class="fa fa-linkedin"></i>LinkedIn</a>
+	 			</li>
+       		</ul>
+		</div>
+		<div class="col-md-5 col-sm-5 animated fadeInRight">
+			<h3>{% trans "I'm a Ombudsman Office" %}</h3>
+			<form id="form-login-ombudsman" method="post" action="/user/login/" role="form">
+				{% csrf_token %}
+				
+				<div class="row animate">
+					<div class="form-group control-group col-md-5 col-sm-5">
+				    	<label for="username" class="control-label">{% trans "Username" %}</label>
+				    	<div class="controls">
+				    		<input type="text" class="form-control" id="username" name="username" maxlength="30" required>
+				    	</div>
+				  	</div>
+					<div class="form-group control-group col-md-5 col-sm-5">
+				    	<label for="password" class="control-label">{% trans "Password" %}</label>
+				    	<div class="controls">
+				    		<input type="password" class="form-control" id="password" name="password" maxlength="128" required>
+				    	</div>
+				  	</div>
+				  	<div class="form-group control-group col-md-2 col-sm-2">
+				  		<label class="control-label"></label>
+			  			<button type="submit" class="btn btn-lg">{% trans "Log In" %}</button>
+				  		<p id="response"></p>
+				  	</div>
+				</div>
+				<strong>{% trans "Forgot your password?" %} <a href="#" class="label label-default" data-toggle="modal" data-target="#dlg-recover-password">{% trans "Click Here" %}</a>!</strong>
+			</form>
+			<br>
+			<h3>{% trans "Not a member yet?" %} <a href="#" class="label label-orange" data-toggle="modal" data-target="#dlg-register">{% trans "Register Now" %}</a>!</h3>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('#content, #content > .container').css('padding-bottom', '0');
+	
+	$('#form-login-ombudsman').submit(function(){
+		var data = {
+			csrfmiddlewaretoken: '{{csrf_token}}',
+			username: $('#username').val(),
+			password: $('#password').val()
+		}
+		
+		$.post('/user/login/', data).done(function(response){
+			if(response.valid == 0)
+				$('#response').html(response.message);
+			else 
+				window.location.href = response.url;
+		});
+		
+		return false;
+	});
+</script>
+{% endblock %}

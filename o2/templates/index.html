@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<script>
+	$('#content').css('padding-bottom', '0');
+</script>
+
+<div id="page-home">
+	<div id="teaser">
+		<div class="container">
+			<div class="row" style="text-shadow: 3px 3px 10px #AAA;">
+				<div class="col-md-9 col-sm-9 logo-text">
+					<h1 class="animated fadeInLeft">{% trans "Ombudsman Office" %}</h1>
+					<h2 class="animated fadeInLeft">#<a href="http://twitter.com/search?src=typd&q=%23{% trans 'webcitizen' %}" target="_blank" style="color: #F06437;">{% trans "webcitizen" %}</a> #<a href="http://twitter.com/search?src=typd&q=%23{% trans 'government2.0' %}" target="_blank" style="color: #F06437;">{% trans "government2.0" %}</a></h2>
+				</div>
+				<div class="col-md-3 col-sm-3 logo-number">
+					<h1 class="animated pulse">2.0</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% if not user.is_authenticated %}
+	<div id="teaser-register">
+		<div class="container">
+			<div class="link-effect-2"><a href="#" data-toggle="modal" data-target="#dlg-register"><span data-hover="{% trans "Sign Up" %}">{% trans "Sign Up" %}</span></a></div>
+			{% trans "or" %} <a href="/user/login" class="label label-default">{% trans "Log In" %}</a>
+		</div>
+	</div>
+	{% endif %}
+
+	<div class="container" style="padding-top: 0;">
+		<div class="row">
+			<div class="col-md-4 col-sm-4 animated fadeInUp">
+               <div class="text-box">
+                   	<div class="text-box-heading">
+                       	<div class="text-box-icon"><i class="fa fa fa-bullhorn"></i></div>
+                       	<h4>{% trans "The Ombudsman Offices" %}</h4>
+                   	</div>
+                   	<div class="text-box-content" style="height: px">
+                       	<p>Morbi quis dignissim neque. Praesent lorem nunc, consectetur quis tempor vitae, sollicitudin et lacus. Quisque lobortis velit odio. Maecenas pharetra leo. </p>
+                   	</div>
+                   	<div class="text-box-btn">
+                    	<a href="/ombudsman" class="btn btn-small">{% trans "View All" %}</a>
+                	</div>
+            	</div>
+           	</div>
+			<div class="col-md-4 col-sm-4 animated fadeInUp">
+				<div class="text-box">
+                   	<div class="text-box-heading">
+                       	<div class="text-box-icon">O<strong>²</strong></div>
+                       	<h4>{% trans "Ombudsman Office" %} <strong style="color: #F06437;">2.0</strong></h4>
+                   	</div>
+                   	<div class="text-box-content" style="height: px">
+                       	<p>Morbi quis dignissim neque. Praesent lorem nunc, consectetur quis tempor vitae, sollicitudin et lacus. Quisque lobortis velit odio. Maecenas pharetra leo. </p>
+                   	</div>
+                   	<div class="text-box-btn">
+                    	<a href="/about" class="btn btn-small">{% trans "More Info" %}</a>
+                	</div>
+            	</div>
+			</div>
+			<div class="col-md-4 col-sm-4 animated fadeInUp">
+				<div class="text-box">
+                   	<div class="text-box-heading">
+                       	<div class="text-box-icon"><i class="fa fa-group"></i></div>
+                       	<h4>{% trans "The Community" %}</h4>
+                   	</div>
+                   	<div class="text-box-content" style="height: px">
+                       	<p>Morbi quis dignissim neque. Praesent lorem nunc, consectetur quis tempor vitae, sollicitudin et lacus. Quisque lobortis velit odio. Maecenas pharetra leo. </p>
+                   	</div>
+                   	<div class="text-box-btn">
+                    	<a href="/users" class="btn btn-small">{% trans "View All" %}</a>
+                	</div>
+            	</div>
+			</div>
+		</div>
+	</div>
+	
+	<div style="height: 180px; position: relative; overflow: hidden;">
+		<div id="handsup" class="flexbox-bottom">
+			<img class="handsup-1" src="/static/img/handsup/handsup-1.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-2.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-3.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-4.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-5.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-6.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-7.png">
+			
+			<img class="handsup-3" src="/static/img/handsup/handsup-1.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-2.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-3.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-4.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-5.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-6.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-7.png">
+			
+			<img class="handsup-3" src="/static/img/handsup/handsup-1.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-2.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-3.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-4.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-5.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-6.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-7.png">
+			
+			<img class="handsup-1" src="/static/img/handsup/handsup-1.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-2.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-3.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-4.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-5.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-6.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-7.png">
+			
+			<img class="handsup-2" src="/static/img/handsup/handsup-1.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-2.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-3.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-4.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-5.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-6.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-7.png">
+			
+			<img class="handsup-3" src="/static/img/handsup/handsup-1.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-2.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-3.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-4.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-5.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-6.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-7.png">
+			
+			<img class="handsup-2" src="/static/img/handsup/handsup-1.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-2.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-3.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-4.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-5.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-6.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-7.png">
+			
+			<img class="handsup-3" src="/static/img/handsup/handsup-1.png">
+			<img class="handsup-2" src="/static/img/handsup/handsup-2.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-3.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-4.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-5.png">
+			<img class="handsup-3" src="/static/img/handsup/handsup-6.png">
+			<img class="handsup-1" src="/static/img/handsup/handsup-7.png">
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function () {
+		$(".logo-text h1").fitText(1.1);
+		$(".logo-text h2").fitText(2.5);
+		$(".logo-number h1").fitText(0.1, {maxFontSize: '200px'});
+	});
+</script>
+{% endblock %}

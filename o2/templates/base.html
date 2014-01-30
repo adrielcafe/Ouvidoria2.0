@@ -1,0 +1,253 @@
+{% load i18n %}
+{% load url from future %}
+
+<!doctype html>
+<html>
+<head>
+    <title>
+    	{% if page_title %}
+		    {{ page_title }} | {% trans "O²: Ombudsman Office 2.0" %}
+		{% else %}
+		    {% trans "O²: Ombudsman Office 2.0" %}
+		{% endif %}
+   	</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="{% trans 'O²: Ombudsman Office 2.0' %}">
+    
+    <link rel="icon" type="image/png" href="/static/favicon.ico" />
+    <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/img/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/img/apple-touch-icon-114x114.png">
+    
+    <!--[if lt IE 9]>
+        <script src="/static/js/html5shiv.js"></script>
+    	<script src="/static/js/respond.js"></script> 
+    <![endif]-->
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/static/css/social_foundicons_ie7.css">
+  	<![endif]-->
+    
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/pace.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/o2.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/custom.css">
+    
+    <script src="/static/js/pace.js"></script>
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/jquery-scrolltofixed.js"></script>
+    <script src="/static/js/jquery.flexisel.js"></script>
+    <script src="/static/js/jquery.fitvids.js"></script>
+    <script src="/static/js/jquery.jplayer.js"></script>
+    <script src="/static/js/jquery.isotope.js"></script>
+    <script src="/static/js/jquery.prettyPhoto.js"></script>
+    <script src="/static/js/jquery.flexslider.js"></script>
+    <script src="/static/js/jquery.fittext.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/bootstrap.jasny.js"></script>
+    <script src="/static/js/bootstrap-select.js"></script>
+    <script src="/static/js/bootstrap-datepicker.js"></script>
+    <script src="/static/js/bootstrap-tagsinput.js"></script>
+    <script src="/static/js/jqBootstrapValidation.js"></script>
+    <script src="/static/js/prefixfree.js"></script>
+    <script src="/static/js/underscore.js"></script>
+    <script src="/static/js/retina.js"></script>
+    <script src="/static/js/waypoints.js"></script> 
+    <script src="/static/js/moment.js"></script> 
+    <script src="/static/js/jqcidades.js"></script> 
+    <!--<script src="/static/js/twitter/jquery.tweet.js"></script>-->
+    <script src="/static/js/o2.js"></script>
+</head>
+<body>
+    <!-- HEADER-->
+    <header> 
+        <div class="header-top-wrap">
+            <div class="container">
+                <!-- LOGO -->
+                <div class="logo animated fadeIn" >
+                    <a href="/"><img src="/static/img/logo-ombudsman-office.svg" alt="logo"></a>
+                </div>
+                <!-- MAIN NAVIGATION -->
+                <a class="btn nav-toogle visible-xs clearfix" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-reorder"></i></a>
+                <nav id="main-nav" class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul>
+                        <li id="lnk-page-index"><a href="/">{% trans "Home" %}</a></li>
+                        <li id="lnk-page-ombudsman">
+	                        <a href="/ombudsman">{% trans "Ombudsman Offices" %}</a>
+	                        {% if not user.group.name == 'ombudsman' %}
+	                        <ul>
+                        		<li>
+						      	 	<a href="/ombudsman/new">{% trans "New Ombudsman Office" %}</a>
+				      	 		</li>
+			      	 		</ul>
+                       		{% endif %}
+                        </li>
+                        <li id="lnk-page-users"><a href="/users">{% trans "People" %}</a></li>
+                        <li id="lnk-page-about"><a href="/about">{% trans "About" %}</a></li>
+                        {% if user.is_authenticated %}
+                       		{% if user.group.name == 'users' %}
+                       		<li id="login" class="link-effect-1">
+	                        	<a href="/user/{{ user.username }}"><span data-hover='{% trans "View Profile" %}'>{{ user.first_name }}</span></a>
+	                       		<ul>
+	                        		<li><a href="/user/edit">{% trans "Edit Profile" %}</a></li>
+	                        		<li><a href="/logout">{% trans "Logout" %}</a></li>
+	                       		</ul>
+	                       	</li>
+                       		{% elif user.group.name == 'ombudsman' %}
+                       		<li id="login" class="link-effect-1">
+	                        	<a href="/ombudsman/{{ user.ombudsman.slug }}"><span data-hover='{% trans "View Profile" %}'>{{ user.username }}</span></a>
+	                       		<ul>
+	                        		<li><a href="/ombudsman/edit">{% trans "Edit Profile" %}</a></li>
+	                        		<li><a href="/logout">{% trans "Logout" %}</a></li>
+	                       		</ul>
+	                       	</li>
+                       		{% endif %}
+                       	{% else %}
+                       	<li id="login" class="link-effect-1">
+                        	<a href="/user/login"><span data-hover='{% trans "Log In" %}'>{% trans "Log In" %}</span></a>
+                       	</li>
+                       	<li id="signup" class="link-effect-1">
+                        	<a href="#" data-toggle="modal" data-target="#dlg-register"><span data-hover='{% trans "Sign Up" %}'>{% trans "Sign Up" %}</span></a>
+                       	</li>
+                       	{% endif %}
+                    </ul>
+                </nav> 
+            </div>
+        </div>
+        <!-- {% if page_title %}
+		    <div class="header-bottom-wrap container">
+	           	<div class="header-title">
+	           		<h1>{{ page_title }}</h1>
+	        	</div>
+	       	</div>
+		{% endif %} -->
+    	<form method="post" action="" id="disconnect-form">{% csrf_token %}</form>
+    	<div class="header-line"></div>
+    </header>
+    
+    <!-- CONTENT -->
+    <div id="content">
+		<!-- <form action="/i18n/setlang/" method="post">
+     		{% csrf_token %}
+      		<input name="next" type="hidden" value="/" />
+      		<select name="language">
+          		<option value="en">English</option>
+          		<option value="pt-br">Brazilian Portuguese</option>
+      		</select>
+      		<input type="submit" value="Go" />
+    	</form> -->
+   		{% block content %}{% endblock %}
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="footer-widgets">
+		<div class="container footer-wrap">
+        	<div class="row">
+            	<div class="col-md-3 col-sm-3">
+                	<div class="widget-title"><h5></h5></div>
+                    
+                </div>
+            	<div class="col-md-6 col-sm-6">
+                	<div class="widget-title"><h5></h5></div>
+                    
+                </div>
+            	<div class="col-md-3 col-sm-3">
+                	<div class="social-icon text-center">
+                      <a href="#" class="foundicon-facebook"></a>
+                      <a href="#" class="foundicon-twitter"></a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <footer class="footer-bottom">
+    	<div class="container">
+        	<div class="row">
+            	<div class="col-md-11 col-sm-11">
+                	<span class="copyrights">&copy; Copyright 2013 by <a href="/index">{% trans "O²: Ombudsman Office 2.0" %}</a>. {% trans "All rights reserved" %}.</span>
+                    
+                    <nav id="footer-bottom-nav" class="hidden-xs">
+                        <ul>
+                            <li><a href="/">{% trans "Home" %}</a></li>
+                            <li><a href="/about">{% trans "About" %}</a></li>
+                            <li><a href="/help">{% trans "Help" %}</a></li>
+                            <li><a href="/faq">{% trans "FAQ" %}</a></li>
+                            <li><a href="/contact">{% trans "Contact" %}</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            	<div class="col-md-1 col-sm-1">
+            		<div class="scrolltop">
+			        	<a href="" class="fa fa-angle-up"></a>
+			        </div>
+            	</div>
+            </div>
+        </div>
+    </footer>
+
+	<div id="dlg-register" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				  	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			  		<h4 class="modal-title">{% trans "Sign Up" %}</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+					  	<div class="col-md-6 col-sm-6">
+							<h3>{% trans "New User" %}</h3>
+							<ul>
+				           		<li>
+				  	 				<a href="{% url 'social:begin' "facebook" %}" class="social-button facebook"><i class="fa fa-facebook"></i>Facebook</a>
+					 			</li>
+				           		<li>
+				  	 				<a href="{% url 'social:begin' "twitter" %}" class="social-button twitter"><i class="fa fa-twitter"></i>Twitter</a>
+				 				</li>
+				           		<li>
+				  	 				<a href="{% url 'social:begin' "google-oauth2" %}" class="social-button google"><i class="fa fa-google-plus"></i>Google</a>
+				 				</li>
+				          		<li>
+				  	 				<a href="{% url 'social:begin' "foursquare" %}" class="social-button foursquare"><i class="fa fa-foursquare"></i>Foursquare</a>
+					 			</li>
+				           		<li>
+				  	 				<a href="{% url 'social:begin' "linkedin" %}" class="social-button linkedin"><i class="fa fa-linkedin"></i>LinkedIn</a>
+					 			</li>
+				       		</ul>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<h3>{% trans "New Ombudsman Office" %}</h3>
+							<a href="/ombudsman/new" class="btn">{% trans "Create New Ombudsman Office" %}</a>
+						</div>
+					</div>
+				</div>
+	    	</div>
+		</div>
+	</div>
+    
+    <script>
+    	$('#lnk-page-{{current_page}}').addClass('current_page_item');
+    	
+        $(function () {
+            $(document).on('click', 'a.disconnect', function (e) {
+                e.preventDefault();
+                $('form#disconnect-form')
+                    .attr('action', $(this).attr('href'))
+                    .submit();
+            });
+        });
+
+        $('.social-button.google-oauth2').addClass('google');
+        $('.social-button.google-oauth2').html('<i class="fa fa-google-plus"></i> Google');
+        $('.social-button.linkedin-oauth2').addClass('linkedin');
+        $('.social-button.linkedin-oauth2').html('<i class="fa fa-linkedin"></i> LinkedIn');
+    </script>
+    
+    {% block templates %}{% endblock %}
+</body>
+</html>
