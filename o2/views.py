@@ -27,12 +27,12 @@ def handler404(request):
     return render(request, '404.html', {}, status = 404)
 
 def index(request):
-    auth_reponse = authentication_request(FIWARE_AUTH_USERNAME, FIWARE_AUTH_PASSWORD)
+    '''auth_reponse = authentication_request(FIWARE_AUTH_USERNAME, FIWARE_AUTH_PASSWORD)
     token = auth_reponse['access']['token']['id']
     for i in auth_reponse['access']['serviceCatalog']:
         if i['name'] == 'swift':
             auth_url = i['endpoints'][0]['publicURL']
-            break
+            break'''
     #auth = auth_url[auth_url.find("AUTH_"):]
 
     #container = list_container(token, auth, 'UsersPicture')
