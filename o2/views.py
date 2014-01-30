@@ -33,7 +33,7 @@ def index(request):
         if i['name'] == 'swift':
             auth_url = i['endpoints'][0]['publicURL']
             break
-    auth = auth_url[auth_url.find("AUTH_"):]
+    #auth = auth_url[auth_url.find("AUTH_"):]
 
     #container = list_container(token, auth, 'UsersPicture')
     #text = store_text(token, auth, 'o2', 'text1', 'teste 1')
